@@ -1,0 +1,14 @@
+/* 3D Background Elements */
+
+
+@keyframes float {
+    0% {
+        transform: translate(-50%, -50%) scale(1.5);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.6);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.5);
+    }
+}

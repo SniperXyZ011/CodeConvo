@@ -1,11 +1,12 @@
-import './App.css'
-
+import './App.css';
+import AppRoutes from './routes/AppRoutes';
+import {UserProvider} from './context/user.context.jsx'
 function App() {
 
   return (
-    <div>
-      hello
-    </div>
+    <UserProvider>
+      <AppRoutes/>
+    </UserProvider>
   )
 }
 
