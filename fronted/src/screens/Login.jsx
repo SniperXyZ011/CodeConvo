@@ -12,7 +12,7 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        axios.post('/login',{
+        axios.post('/users/login',{
             email: email,
             password: password
         }).then((response) => {
