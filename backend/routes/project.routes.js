@@ -12,4 +12,20 @@ router.post(
   projectController.createProject
 );
 
+router.get("/all", authMiddleWare.authUser, projectController.getAllProjects);
+
+router.put(
+  "/add-user",
+  authMiddleWare.authUser,
+  body("projectId").isString().withMessage("projectId is required"),
+  body("users")
+    .isArray({ min: 1 })
+    .withMessage("User must be an arrya of strings")
+    .bail()
+    .custom((users) => users.every((user) => typeof user === "string"))
+    .withMessage("User must be an arrya of strings"),
+  projectController.addUserToProject
+);
+
+router.get('/get-project/:projectId', authMiddleWare.authUser, projectController.getProjectById)
 export default router;
