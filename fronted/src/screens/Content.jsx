@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useUser } from "../context/user.context.jsx";
 import axios from "../config/axios"; // Ensure you have axios configured
 import ProjectModal from "./ProjectModal"; // Import the modal component
+import { useNavigate } from "react-router-dom";
 
 const Content = () => {
   const { user } = useUser();
   const [projects, setProjects] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   // Fetch projects when the component mounts
   useEffect(() => {
@@ -28,6 +30,11 @@ const Content = () => {
     setIsModalOpen(false);
   };
 
+
+  const handleProjectClick = (project) => {
+    navigate(`/project/${project._id}`, {state: {project}});
+  };
+
   return (
     <div className="container mx-auto mt-10">
       <h1 className="text-3xl font-bold mb-4">Your Projects</h1>
@@ -41,8 +48,8 @@ const Content = () => {
         {projects.map((project) => (
           <div className="flex min-w-44 w-3/4 cursor-pointer ">
             <div
-              key={project._id}
-              className="bg-white shadow-md rounded-lg p-4 w-full hover:bg-violet-100"
+              key={project._id} onClick={() => handleProjectClick(project)}
+              className="bg-white shadow-md rounded-lg p-4 w-full hover:bg-rose-50"
             >
               <h2 className="text-xl font-semibold">{project.name}</h2>
               <div className="flex gap-1">
