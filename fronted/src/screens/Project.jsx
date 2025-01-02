@@ -26,7 +26,7 @@ const Project =  () => {
               </li>
             ))}
           </ul><div className='h-screen'>
-          <ChatComponent projectName={project.name} userName={userName} />
+          <ChatComponent projectName={project.name} userName={userName} projectData = {project} />
           </div>
         </div>
       );
